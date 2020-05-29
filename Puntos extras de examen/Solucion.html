@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Ejercicio puntos extras.</title>
+</head>
+<body>
+    <p id="demo"></p>
+<script> 
+//De 7 am a 12 pm tengo clases virtuales
+//De 2 pm a 3 pm como con mi familia todos los días
+//de 4 pm a 6 pm entreno box
+//de 8 pm a 10 pm hago tareas 
+var calendario =[[7, 12], 
+                 [14, 15], 
+                 [16, 18], 
+                 [20, 22]];
+
+//Debe regresar [0, 7], [12, 14], [15, 16], [18, 20], [22, 13]
+//Esta función es suponiendo que la persona registra su calendario en orden de que pasa primero
+function TiempoLibre(calendario) {
+    var horasLibres =[];
+
+    horasLibres.push([0, calendario[0][0]]);
+
+    //A el array horasLibres le estoy agregando un nuevo array con de dos valores, el primero es la hora de comienzo de la hora libre y el 
+    //segundo es la hora de término de la hora libre
+    horasLibres.push([calendario[0][1], calendario[1][0]]);
+
+    horasLibres.push([calendario[1][1], calendario[2][0]]);
+
+    horasLibres.push([calendario[2][1], calendario[3][0]]);
+
+    horasLibres.push([calendario[3][1], 23]);
+
+    return horasLibres[0] + "<br>" + horasLibres[1] + "<br>" + horasLibres[2] + "<br>" + horasLibres[3] + "<br>" + horasLibres[4];
+}        //Aqui estoy retornando las horas libre que tengo  
+
+var textoHorasLibres = TiempoLibre(calendario);
+document.getElementById("demo").innerHTML= textoHorasLibres;
+//Llamo a la funcion tiempo libre con el parametro calendario, para que el texto que nos regrese con el return se le asigne a la variable textoHorasLibres
+
+
+</script>
+</body>
+</html>
